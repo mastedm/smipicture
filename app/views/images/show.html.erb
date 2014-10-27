@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @image.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @image.description %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+	<table border="1" >
+		<thead>
+			<td>Small</td>
+			<td>Medium</td>
+			<td>Large</td>
+			<td>Original</td>
+		</thead>
+		<tr>
+			<td><%= image_tag(@image.picture_url(:small)) if @image.picture.present? %></td>
+			<td><%= image_tag(@image.picture_url(:medium)) if @image.picture.present? %></td>
+			<td><%= image_tag(@image.picture_url(:large)) if @image.picture.present? %></td>
+			<td><%= image_tag(@image.picture_url) if @image.picture.present? %></td>
+ 	   </tr>
+	</table>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

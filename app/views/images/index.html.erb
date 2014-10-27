@@ -1,0 +1,34 @@
+<h1>Listing images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Picture</th>
+	  <th colspan="4">Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.name %></td>
+        <td><%= image.description %></td>
+		<td><%= image_tag image.picture_url(:small) %></td>
+        <td><%= link_to "Small", image.picture_url(:small) %></td>
+		<td><%= link_to "Medium", image.picture_url(:medium) %></td>
+		<td><%= link_to "Large", image.picture_url(:large) %></td>
+		<td><%= link_to "Original", image.picture_url() %></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>
